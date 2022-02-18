@@ -12,7 +12,7 @@ class SignByteTable(LookupTable):
 
     def __init__(self):
         super().__init__(["value", "sign"])
-        for v in range(0, 2 ** 8):
+        for v in range(0, 2**8):
             self.add_row(value=v, sign=(v >> 7) * 0xFF)
 
 
@@ -77,4 +77,6 @@ def test_check_byte():
                     r8s[j] = sign_byte
                     selectors[j - 1] = 1
 
-            check_signextend(value, i8s, r8s, sign_byte if i < 31 else 0, selectors, sign_byte_table)
+            check_signextend(
+                value, i8s, r8s, sign_byte if i < 31 else 0, selectors, sign_byte_table
+            )
